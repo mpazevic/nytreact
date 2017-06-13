@@ -8,7 +8,7 @@ const viewRouter = require("./routes/viewRoutes.js")
 
 // Create Instance of Express
 const app = express();
-// Sets an initial port. We'll use this later in our listener
+// Sets an initial port for later use in listener
 const PORT = process.env.PORT || 8080;
 
 // Run Morgan for Logging
@@ -23,7 +23,7 @@ app.use(express.static("./public"));
 // -------------------------------------------------
 
 const localDbURL = "mongodb://localhost/nytDB"
-// MongoDB Configuration configuration (Change this URL to your own DB)
+// MongoDB configuration (Change this URL to your own DB)
 mongoose.connect(process.env.MONGOLAB_URI || localDbURL);
 var db = mongoose.connection;
 
