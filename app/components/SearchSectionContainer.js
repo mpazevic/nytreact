@@ -14,7 +14,7 @@ class SearchSectionContainer extends Component {
 
   }
 
-  //Submit a query to the NYT when the submit button is pressed
+  //Submit a query to the NYT API when the submit button is pressed
   handleClick() {
     this.props.queryNYTWithInputs(this.state.topic, this.state.startYear, this.state.endYear);
     this.setState({

@@ -7,7 +7,7 @@ const ResultsSectionContainer = (props) => {
     <div className="panel panel-primary">
       <div className="panel-heading text-center">{ props.header }</div>
       <div className="panel-body">
-        <ArticleCardList articles={ props.articles }/>
+        <ArticleCardList updateSaved={ () => props.updateSaved() } articles={ props.articles }/>
       </div>
     </div>
   )

@@ -3,8 +3,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-const viewRouter = require("./routes/viewRoutes.js")
-// const apiRouter = require("./routes/apiRoutes.js")
+const viewRouter = require("./routes/viewRoutes.js");
+const apiRouter = require("./routes/apiRoutes.js");
 
 // Create Instance of Express
 const app = express();
@@ -37,7 +37,7 @@ db.once("open", function() {
 
 // -------------------------------------------------
 
-// app.use("/api", apiRouter)
+app.use("/api", apiRouter);
 app.use("/", viewRouter);
 
 // -------------------------------------------------

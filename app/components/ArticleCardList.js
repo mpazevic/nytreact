@@ -3,9 +3,9 @@ import ArticleCard from './ArticleCard';
 
 const ArticleCardList = (props) => {
 
-  const articleListItems = props.articles.map((article) => {
+  const articleListItems = props.articles.slice(0, 5).map((article) => {
     return (
-      <ArticleCard key={article._id} article={article}/>
+      <ArticleCard updateSaved={ () => props.updateSaved() } key={article._id} article={article}/>
     )
   });
 

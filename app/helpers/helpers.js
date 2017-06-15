@@ -6,9 +6,6 @@ var helper = {
   //helper function for grabbing NYT articles
   makeQuery: function(topic, startYear, endYear) {
 
-    console.log(topic, startYear, endYear);
-
-    // Figure out the geolocation
     var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     queryURL += '?' + $.param({
       'api-key': "9926da2aa6e947f0882249c001929915",
@@ -34,6 +31,21 @@ var helper = {
       return result;
     });
   },
+
+  //Ping database to grab articles
+  retriveSavedArticles: function() {
+    return axios.get("/api/article");
+  },
+
+  // Post new searches to the database
+  postSavedArticles: function(saved) {
+    return axios.post("/api/article", saved);
+  },
+
+  //Remove saved articles from the database
+  deleteSavedArticles: function(toDel) {
+    return axios.put("/api/article", toDel);
+  }
 
 };
 

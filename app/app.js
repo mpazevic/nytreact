@@ -11,23 +11,29 @@ class App extends Component {
     super(props);
     this.state = {
       articles: [],
+      savedArticles: [],
       topic: "",
       startYear: "",
       endYear: ""
     }
+
+    // Display saved articles to the user when the page loads (if there are any saved articles)
+    this.renderSaved();
+  }
+
+  //Display saved articles to the user
+  renderSaved() {
+    alert('retrieving');
+    helper.retriveSavedArticles().then((savedArticles) => {
+      this.setState({savedArticles})
+    })
   }
 
   queryNYTWithInputs(topic, startYear, endYear) {
-    // this.setState({
-    //   topic: topic,
-    //   startYear: startYear,
-    //   endYear: endYear
-    // })
 
-    alert("topic: " + topic);
-    alert("startYear: " + startYear);
-    alert("endYear: " + endYear);
-
+    // alert("topic: " + topic);
+    // alert("startYear: " + startYear);
+    // alert("endYear: " + endYear);
 
     //Make a query to the NYT API, and create the components
     helper.makeQuery(topic, startYear, endYear).then((result) => {
@@ -45,6 +51,12 @@ class App extends Component {
     });
   }
 
+  //Update the saved articles after an article has been selected
+  updateSavedArticles() {
+    alert('about to re-render')
+    this.renderSaved();
+  }
+
   render () {
     return (
       <div className="content-wrapper">
@@ -54,8 +66,8 @@ class App extends Component {
         </div>
 
         <SearchSectionContainer queryNYTWithInputs={ (topic, startYear, endYear) => { this.queryNYTWithInputs(topic, startYear, endYear)}} header="Search"/>
-        <ResultsSectionContainer articles={this.state.articles} header="Results" />
-        {/* <SavedSectionContainer header="Saved Articles" /> */}
+        <ResultsSectionContainer updateSaved={ () => this.updateSavedArticles() } articles={this.state.articles} header="Results" />
+        <SavedSectionContainer savedArticles={this.state.savedArticles} header="Saved Articles" />
       </div>
     )
   }
