@@ -1,15 +1,20 @@
 import React from 'react';
+import ArticleCard from './ArticleCard';
 
-class ArticleCardList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
+const ArticleCardList = (props) => {
 
-  render() {
-    
-  }
+  const articleListItems = props.articles.map((article) => {
+    return (
+      <ArticleCard key={article._id} article={article}/>
+    )
+  });
+
+  return (
+    <ul>
+      {articleListItems}
+    </ul>
+  )
+
 }
 
-export default
+export default ArticleCardList;

@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ArticleCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
-  }
+const ArticleCard = ({article}) => {
 
-  render() {
-    return (
-      <div>Suhhhhhh</div>
-    )
-  }
+  return (
+    <div className="panel">
+      <div className="panel-heading"><a target="_blank" href={article.url}>{article.title}</a><button className="btn btn-default save-button" href="#">Save</button></div>
+      <div className="panel-body">
+        <span>Date: {article.date}</span>
+      </div>
+    </div>
+  )
 }
 
 export default ArticleCard;

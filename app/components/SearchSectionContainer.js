@@ -14,14 +14,14 @@ class SearchSectionContainer extends Component {
 
   }
 
+  //Submit a query to the NYT when the submit button is pressed
   handleClick() {
-    this.logInputs(this.state.topic, this.state.startYear, this.state.endYear);
-  };
-
-  logInputs(topic, startYear, endYear) {
-    alert("Topic: " + topic);
-    alert("Start Year: " + startYear);
-    alert("End Year: " + endYear);
+    this.props.queryNYTWithInputs(this.state.topic, this.state.startYear, this.state.endYear);
+    this.setState({
+      topic: '',
+      startYear: '',
+      endYear: ''
+    });
   };
 
   render() {
@@ -30,9 +30,9 @@ class SearchSectionContainer extends Component {
         <div className="panel-heading text-center">{this.props.header}</div>
         <div className="panel-body">
           <div className="input-group">
-            <SearchBar label="Topic" setTerm={ topic => this.setState({topic})} />
-            <SearchBar label="Start Year" setTerm={ startYear => this.setState({startYear}) } />
-            <SearchBar label="End Year" setTerm={ endYear => this.setState({endYear}) } />
+            <SearchBar label="Topic" value={this.state.topic} setTerm={ topic => this.setState({topic})} />
+            <SearchBar label="Start Year" value={this.state.startYear} setTerm={ startYear => this.setState({startYear}) } />
+            <SearchBar label="End Year" value={this.state.endYear} setTerm={ endYear => this.setState({endYear}) } />
             <SubmitButton onClick={ () => this.handleClick() }/>
           </div>
         </div>

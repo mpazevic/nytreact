@@ -18,7 +18,7 @@ class SearchBar extends Component {
           className="form-control"
           type="text"
           id={this.props.label}
-          value={this.state.term}
+          value={this.props.value}
           onChange={event => this.handleInputChange(event.target.value)} />
       </div>
     )
@@ -28,6 +28,7 @@ class SearchBar extends Component {
     this.setState({term});
     this.props.setTerm(term);
   }
+
 }
 
 export default SearchBar;
