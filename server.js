@@ -24,7 +24,8 @@ app.use(express.static("./public"));
 
 const localDbURL = "mongodb://localhost/nytDB"
 // MongoDB configuration (Change this URL to your own DB)
-mongoose.connect(process.env.MONGOLAB_URI || localDbURL);
+// process.env.MONGOLAB_URI || localDbURL
+mongoose.connect("mongodb://heroku_zmn8ldxn:coh895jlqa4dqdr25sre34t3k3@ds127802.mlab.com:27802/heroku_zmn8ldxn");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
