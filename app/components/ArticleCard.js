@@ -10,7 +10,6 @@ class ArticleCard extends Component {
   }
 
   //When an article's Save button is clicked, post it to the database and set the state of the top level component
-  // title, date, url, _id
   postSaved(selectedArticle) {
     helper.postSavedArticles(selectedArticle).then((res) => {
       console.log(res);
@@ -19,7 +18,7 @@ class ArticleCard extends Component {
   }
 
   updateSavedState() {
-    alert('Updating top level state');
+    // alert('Updating top level state');
     this.props.updateSaved();
   }
 

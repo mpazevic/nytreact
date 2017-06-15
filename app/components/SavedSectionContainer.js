@@ -7,7 +7,7 @@ const SavedSectionContainer = (props) => {
     <div className="panel panel-primary">
       <div className="panel-heading text-center">{ props.header }</div>
       <div className="panel-body">
-        <SavedCardList savedArticles={ props.savedArticles }/>
+        <SavedCardList updateSaved={ () => props.updateSaved() } savedArticles={ props.savedArticles }/>
       </div>
     </div>
   )

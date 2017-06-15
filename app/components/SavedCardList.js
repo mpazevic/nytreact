@@ -10,7 +10,7 @@ const SavedCardList = (props) => {
 
   const savedArticleListItems = props.savedArticles.data.map((savedArticle) => {
     return (
-      <SavedCard key={savedArticle._id} savedArticle={savedArticle}/>
+      <SavedCard key={savedArticle._id} updateSaved={ () => props.updateSaved() } savedArticle={savedArticle}/>
     )
   });
 

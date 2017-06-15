@@ -23,7 +23,7 @@ class App extends Component {
 
   //Display saved articles to the user
   renderSaved() {
-    alert('retrieving');
+    // alert('retrieving');
     helper.retriveSavedArticles().then((savedArticles) => {
       this.setState({savedArticles})
     })
@@ -53,7 +53,7 @@ class App extends Component {
 
   //Update the saved articles after an article has been selected
   updateSavedArticles() {
-    alert('about to re-render')
+    // alert('about to re-render')
     this.renderSaved();
   }
 
@@ -67,7 +67,7 @@ class App extends Component {
 
         <SearchSectionContainer queryNYTWithInputs={ (topic, startYear, endYear) => { this.queryNYTWithInputs(topic, startYear, endYear)}} header="Search"/>
         <ResultsSectionContainer updateSaved={ () => this.updateSavedArticles() } articles={this.state.articles} header="Results" />
-        <SavedSectionContainer savedArticles={this.state.savedArticles} header="Saved Articles" />
+        <SavedSectionContainer updateSaved={ () => this.updateSavedArticles() } savedArticles={this.state.savedArticles} header="Saved Articles" />
       </div>
     )
   }
